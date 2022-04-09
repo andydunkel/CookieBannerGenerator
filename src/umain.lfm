@@ -1,0 +1,109 @@
+object MainForm: TMainForm
+  Left = 521
+  Height = 575
+  Top = 224
+  Width = 937
+  Caption = 'JS-CookieBannerGenerator'
+  ClientHeight = 555
+  ClientWidth = 937
+  Menu = MainMenu
+  Position = poScreenCenter
+  LCLVersion = '2.2.0.4'
+  object ToolBar1: TToolBar
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 937
+    ButtonHeight = 32
+    ButtonWidth = 32
+    Images = ImageListToolbar
+    ParentShowHint = False
+    ShowCaptions = True
+    ShowHint = True
+    TabOrder = 0
+    object ToolButtonOpen: TToolButton
+      Left = 33
+      Top = 2
+      Action = ActionOpen
+    end
+    object ToolButtonNew: TToolButton
+      Left = 1
+      Top = 2
+      Action = ActionNew
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 532
+    Width = 937
+    Panels = <>
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 492
+    Top = 40
+    Width = 937
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 2
+    object TabSheet1: TTabSheet
+      Caption = 'Allgemeine Einstellungen'
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Dienste'
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Code'
+    end
+  end
+  object MainMenu: TMainMenu
+    Images = ImageListToolbar
+    Left = 70
+    Top = 112
+    object MenuFile: TMenuItem
+      Caption = '&Datei'
+      object MenuItem1: TMenuItem
+        Action = ActionNew
+      end
+      object MenuItem2: TMenuItem
+        Action = ActionOpen
+      end
+      object Separator1: TMenuItem
+        Caption = '-'
+      end
+      object MenuExit: TMenuItem
+        Caption = '&Beenden'
+        OnClick = MenuExitClick
+      end
+    end
+  end
+  object ActionList1: TActionList
+    Images = ImageListToolbar
+    Left = 160
+    Top = 112
+    object ActionNew: TAction
+      Caption = 'Neu'
+      ImageIndex = 0
+      OnExecute = ActionNewExecute
+    end
+    object ActionOpen: TAction
+      Caption = 'Öffnen'
+      ImageIndex = 1
+    end
+  end
+  object ImageListToolbar: TImageList
+    Left = 280
+    Top = 119
+    Bitmap = {
+      4C7A020000001000000010000000CA0000000000000078DAED956109C4300C85
+      2BA15226E12454422554C21C4C42244C42259C844A98845E070984D02EE9C1E0
+      3816787FB67CA3495F32E76E89A5092EB429ECD1549B72D32EF4C677576CC69C
+      D8C909039EB3FE0B9ECEBC638DB37CAFDE65928F86BB79F8FBF8ACF81E983765
+      6C1DAF8F04EEBF62C59E4825230FB81722137DD3B27F00FB2A2319F7CF88B7FA
+      67861FD57FF22F83FF7A3D00E6AB62F01FED49C91765B75314BC1FCED35C04C3
+      BF45E601DBBF5EE123E67AC1577C1E1465513BCD6E9D50FA95C1FB00025B8A44
+    }
+  end
+end
