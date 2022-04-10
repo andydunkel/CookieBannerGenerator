@@ -7,6 +7,7 @@ object MainForm: TMainForm
   ClientHeight = 555
   ClientWidth = 937
   Menu = MainMenu
+  OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '2.2.0.4'
   object ToolBar1: TToolBar
@@ -31,6 +32,11 @@ object MainForm: TMainForm
       Top = 2
       Action = ActionNew
     end
+    object ToolButton1: TToolButton
+      Left = 78
+      Top = 2
+      Action = ActionSave
+    end
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -50,6 +56,86 @@ object MainForm: TMainForm
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Allgemeine Einstellungen'
+      ClientHeight = 464
+      ClientWidth = 929
+      object GroupBox1: TGroupBox
+        Left = 8
+        Height = 185
+        Top = 16
+        Width = 320
+        Caption = 'Allgemeines'
+        ClientHeight = 165
+        ClientWidth = 316
+        TabOrder = 0
+        object Label1: TLabel
+          Left = 16
+          Height = 15
+          Top = 12
+          Width = 42
+          Caption = 'Sprache'
+        end
+        object cboLanguage: TComboBox
+          Left = 136
+          Height = 23
+          Top = 8
+          Width = 136
+          ItemHeight = 15
+          ItemIndex = 0
+          Items.Strings = (
+            'de'
+            'en'
+            'it'
+            'fr'
+          )
+          TabOrder = 0
+          Text = 'de'
+        end
+        object Label2: TLabel
+          Left = 16
+          Height = 15
+          Top = 40
+          Width = 72
+          Caption = 'Cookie Name'
+        end
+        object edtCookieName: TEdit
+          Left = 136
+          Height = 23
+          Top = 40
+          Width = 136
+          OnChange = edtCookieNameChange
+          TabOrder = 1
+        end
+        object Label3: TLabel
+          Left = 15
+          Height = 15
+          Top = 72
+          Width = 66
+          Caption = 'Verzögerung'
+        end
+        object edtDelay: TEdit
+          Left = 136
+          Height = 23
+          Top = 72
+          Width = 136
+          TabOrder = 2
+        end
+        object chkHideBots: TCheckBox
+          Left = 136
+          Height = 19
+          Top = 104
+          Width = 122
+          Caption = 'verstecken vor Bots'
+          TabOrder = 3
+        end
+        object chkRemoveCookieTables: TCheckBox
+          Left = 136
+          Height = 19
+          Top = 128
+          Width = 158
+          Caption = 'Cookie Tabellen entfernen'
+          TabOrder = 4
+        end
+      end
     end
     object TabSheet2: TTabSheet
       Caption = 'Dienste'
@@ -60,8 +146,8 @@ object MainForm: TMainForm
   end
   object MainMenu: TMainMenu
     Images = ImageListToolbar
-    Left = 70
-    Top = 112
+    Left = 648
+    Top = 424
     object MenuFile: TMenuItem
       Caption = '&Datei'
       object MenuItem1: TMenuItem
@@ -69,6 +155,9 @@ object MainForm: TMainForm
       end
       object MenuItem2: TMenuItem
         Action = ActionOpen
+      end
+      object MenuItem3: TMenuItem
+        Action = ActionSave
       end
       object Separator1: TMenuItem
         Caption = '-'
@@ -81,8 +170,8 @@ object MainForm: TMainForm
   end
   object ActionList1: TActionList
     Images = ImageListToolbar
-    Left = 160
-    Top = 112
+    Left = 576
+    Top = 432
     object ActionNew: TAction
       Caption = 'Neu'
       ImageIndex = 0
@@ -92,18 +181,33 @@ object MainForm: TMainForm
       Caption = 'Öffnen'
       ImageIndex = 1
     end
+    object ActionSave: TAction
+      Caption = '&Speichern'
+      ImageIndex = 2
+      OnExecute = ActionSaveExecute
+    end
   end
   object ImageListToolbar: TImageList
-    Left = 280
-    Top = 119
+    Left = 696
+    Top = 424
     Bitmap = {
-      4C7A020000001000000010000000CA0000000000000078DAED956109C4300C85
-      2BA15226E12454422554C21C4C42244C42259C844A98845E070984D02EE9C1E0
-      3816787FB67CA3495F32E76E89A5092EB429ECD1549B72D32EF4C677576CC69C
-      D8C909039EB3FE0B9ECEBC638DB37CAFDE65928F86BB79F8FBF8ACF81E983765
-      6C1DAF8F04EEBF62C59E4825230FB81722137DD3B27F00FB2A2319F7CF88B7FA
-      67861FD57FF22F83FF7A3D00E6AB62F01FED49C91765B75314BC1FCED35C04C3
-      BF45E601DBBF5EE123E67AC1577C1E1465513BCD6E9D50FA95C1FB00025B8A44
+      4C7A030000001000000010000000010100000000000078DAED968B0984300C86
+      3B82A338C28DD0113A4247B80D1C212374848EE0081DC1117A3D4820843E520F
+      410E033F82F6139BC75F8DB924D622E8681BB047512E8A454168C7673D36E21A
+      5759631B3C6797133C7D73C03DCEF2B5FDAE93BC53D4E6E1AFE3E3A0EF81F5A6
+      8CADD2EB2D81F9AF78634EA4BC9207F405C744EFD4F80F605E6578A5FFB4786D
+      FFCCF0ADFD7FF997A2FF6A3900D65749D17FE493924F036FA748581FCED35C58
+      C5D922D701F3DF65C03B5CBB083EE37D3B50147BA7D9CD13F2E60919F1C7DC65
+      D6D7356E679EE03AFE6F1B7C105E7596BFFBF937CABF8607E1C58ED545C3F7FE
+      9BAEE4815DE5DC53DD5BF54F13F37FDC65E83E8614E512
     }
+  end
+  object SaveDialog: TSaveDialog
+    Title = 'Datei speichern'
+    DefaultExt = '.*.cookie'
+    FileName = 'banner.cookie'
+    Filter = 'Cookie Banner Datei (*.cookie)|*.cookie|Alle Dateien (*.*)|*.*'
+    Left = 336
+    Top = 391
   end
 end
