@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <current_lang>de</current_lang>
+  <cookie_name>cookie_js</cookie_name>
+  <autoclear>0</autoclear>
+  <page_scripts>0</page_scripts>
+  <hide_from_bots>-1</hide_from_bots>
+  <remove_cookie_tables>0</remove_cookie_tables>
+  <delay>0</delay>
+</xml>

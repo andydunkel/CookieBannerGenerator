@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ComCtrls,
-  ActnList, StdCtrls, udatamodel;
+  ActnList, StdCtrls, udatamodel, globalfunctions;
 
 type
 
@@ -75,13 +75,20 @@ end;
 procedure TMainForm.DialogToModel;
 begin
   DataModel.current_lang:= cboLanguage.Text;
-  DataModel.delay:= StrToInt(edtDelay.Text);
+  DataModel.delay:= StringToInteger(edtDelay.Text);
+  DataModel.cookie_name:= edtCookieName.Text;
+  DataModel.hide_from_bots:= chkHideBots.Checked;
+  DataModel.remove_cookie_tables:= chkRemoveCookieTables.Checked;
 
 end;
 
 procedure TMainForm.ModelToDialog;
 begin
-
+  cboLanguage.Text:= DataModel.current_lang;
+  edtDelay.Text:= IntegerToString(DataModel.delay);
+  edtCookieName.Text:= DataModel.cookie_name;
+  chkHideBots.Checked:= DataModel.hide_from_bots;
+  chkRemoveCookieTables.Checked:= DataModel.remove_cookie_tables;
 end;
 
 procedure TMainForm.ActionNewExecute(Sender: TObject);

@@ -50,6 +50,10 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="XMLHelper"/>
       </Unit>
+      <Unit>
+        <Filename Value="globalfunctions.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
