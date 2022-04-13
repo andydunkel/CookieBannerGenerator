@@ -8,11 +8,17 @@ uses
   Classes, SysUtils, contnrs, XMLHelper, laz2_XMLRead, laz2_XmlWrite, laz2_DOM;
 
 type
+
+  { TGuiOptions }
+
   TGuiOptions = class
     public
       layout: String;
       position: String;
+      position1: String;
       transition: String;
+      procedure Save(Node: TDOMNode);
+      procedure Load(Node: TDOMNode);
   end;
 
 type
@@ -104,6 +110,18 @@ type
 
 implementation
 
+{ TGuiOptions }
+
+procedure TGuiOptions.Save(Node: TDOMNode);
+begin
+
+end;
+
+procedure TGuiOptions.Load(Node: TDOMNode);
+begin
+
+end;
+
 { TSettingsModal }
 
 constructor TSettingsModal.Create;
@@ -124,7 +142,7 @@ end;
 procedure TDataModel.Save;
 var
   doc : TXMLDocument;
-  mainNode: TDOMNode;
+  mainNode, GuiOptionConsentModalNode,GuiOptionSettingsModalNode : TDOMNode;
 begin
   doc:= TXMLDocument.Create;
 
@@ -138,6 +156,14 @@ begin
   TXMLHelper.CreateXmlNode(doc, mainNode, 'hide_from_bots', BoolToStr(hide_from_bots));
   TXMLHelper.CreateXmlNode(doc, mainNode, 'remove_cookie_tables', BoolToStr(remove_cookie_tables));
   TXMLHelper.CreateXmlNode(doc, mainNode, 'delay', IntToStr(delay));
+
+  GuiOptionConsentModalNode:= TXMLHelper.CreateXmlNode(doc, 'GuiOptionConsentModal');
+  GuiOptionSettingsModalNode:= TXMLHelper.CreateXmlNode(doc, 'GuiOptionSettingsModal');
+
+  mainNode.AppendChild(GuiOptionSettingsModalNode);
+  mainNode.AppendChild(GuiOptionConsentModalNode);
+
+
 
   WriteXMLFile(doc, Self.FileName);
 end;
