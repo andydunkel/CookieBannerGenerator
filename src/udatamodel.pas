@@ -17,29 +17,42 @@ type
       position: String;
       position1: String;
       transition: String;
-      procedure Save(Node: TDOMNode);
+      procedure Save(Doc: TXMLDocument; Node: TDOMNode);
       procedure Load(Node: TDOMNode);
   end;
 
 type
+
+  { TConsentModal }
+
   TConsentModal = class
     public
       title:String;
       description:String;
       primary_btn_text: String;
       secondary_btn_text: String;
+      procedure Save(Doc: TXMLDocument; Node: TDOMNode);
+      procedure Load(Node: TDOMNode);
   end;
 
 type
+
+  { TToggle }
+
   TToggle = class
     public
     isToggle: boolean;
     value: string;
     enabled: boolean;
     readonly: boolean;
+    procedure Save(Doc: TXMLDocument; Node: TDOMNode);
+    procedure Load(Node: TDOMNode);
   end;
 
 type
+
+  { TCookieTableEntry }
+
   TCookieTableEntry = class
   public
     col1: String;
@@ -47,6 +60,8 @@ type
     col3: String;
     col4: String;
     is_regex: boolean;
+    procedure Save(Doc: TXMLDocument; Node: TDOMNode);
+    procedure Load(Node: TXMLDocument);
   end;
 
 
@@ -110,16 +125,78 @@ type
 
 implementation
 
+{ TCookieTableEntry }
+
+procedure TCookieTableEntry.Save(Doc: TXMLDocument; Node: TDOMNode);
+begin
+  TXMLHelper.CreateXmlNode(Doc, Node, 'col1', Self.col1);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'col2', Self.col2);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'col3', Self.col3);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'col4', Self.col4);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'is_regex', BoolToStr(Self.is_regex));
+end;
+
+procedure TCookieTableEntry.Load(Node: TXMLDocument);
+begin
+  Self.col1:= TXMLHelper.GetXML('col1', Node);
+  Self.col2:= TXMLHelper.GetXML('col2', Node);
+  Self.col3:= TXMLHelper.GetXML('col3', Node);
+  Self.col4:= TXMLHelper.GetXML('col4', Node);
+  Self.is_regex:= TXMLHelper.GetXMLBool('is_regex', Node);
+end;
+
+{ TToggle }
+
+procedure TToggle.Save(Doc: TXMLDocument; Node: TDOMNode);
+begin
+  TXMLHelper.CreateXmlNode(Doc, Node, 'enabled', BoolToStr(Self.enabled));
+  TXMLHelper.CreateXmlNode(Doc, Node, 'isToggle', BoolToStr(Self.isToggle));
+  TXMLHelper.CreateXmlNode(Doc, Node, 'readonly', BoolToStr(Self.readonly));
+  TXMLHelper.CreateXmlNode(Doc, Node, 'value', Self.value);
+end;
+
+procedure TToggle.Load(Node: TDOMNode);
+begin
+  Self.value:= TXMLHelper.GetXML('value', Node);
+  Self.readonly:= TXMLHelper.GetXMLBool('readonly', Node);
+  Self.enabled:= TXMLHelper.GetXMLBool('enabled', Node);
+  Self.isToggle:= TXMLHelper.GetXMLBool('isToggle', Node);
+end;
+
+{ TConsentModal }
+
+procedure TConsentModal.Save(Doc: TXMLDocument; Node: TDOMNode);
+begin
+  TXMLHelper.CreateXmlNode(Doc, Node, 'title', Self.title);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'description', Self.description);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'primary_btn_text', Self.primary_btn_text);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'secondary_btn_text', Self.secondary_btn_text);
+end;
+
+procedure TConsentModal.Load(Node: TDOMNode);
+begin
+  Self.title:= TXMLHelper.GetXML('title', Node);
+  Self.description:= TXMLHelper.GetXML('description', Node);
+  Self.primary_btn_text:= TXMLHelper.GetXML('primary_btn_text', Node);
+  Self.secondary_btn_text:= TXMLHelper.GetXML('secondary_btn_text', Node);
+end;
+
 { TGuiOptions }
 
-procedure TGuiOptions.Save(Node: TDOMNode);
+procedure TGuiOptions.Save(Doc: TXMLDocument; Node: TDOMNode);
 begin
-
+  TXMLHelper.CreateXmlNode(Doc, Node, 'layout', Self.layout);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'position', Self.position);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'position1', Self.position1);
+  TXMLHelper.CreateXmlNode(Doc, Node, 'transition', Self.transition);
 end;
 
 procedure TGuiOptions.Load(Node: TDOMNode);
 begin
-
+  Self.layout:= TXMLHelper.GetXML('layout', Node, 'bar');
+  Self.position:= TXMLHelper.GetXML('position', Node, '');
+  Self.position1:= TXMLHelper.GetXML('position1', Node, 'left');
+  Self.transition:= TXMLHelper.GetXML('transition', Node, 'slide');
 end;
 
 { TSettingsModal }
@@ -158,12 +235,15 @@ begin
   TXMLHelper.CreateXmlNode(doc, mainNode, 'delay', IntToStr(delay));
 
   GuiOptionConsentModalNode:= TXMLHelper.CreateXmlNode(doc, 'GuiOptionConsentModal');
+  Self.GuiOptionConsentModal.Save(doc, GuiOptionConsentModalNode);
+
   GuiOptionSettingsModalNode:= TXMLHelper.CreateXmlNode(doc, 'GuiOptionSettingsModal');
+  Self.GuiOptionSettingsModal.Save(doc, GuiOptionSettingsModalNode);
+
+
 
   mainNode.AppendChild(GuiOptionSettingsModalNode);
   mainNode.AppendChild(GuiOptionConsentModalNode);
-
-
 
   WriteXMLFile(doc, Self.FileName);
 end;
