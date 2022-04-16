@@ -138,12 +138,12 @@ object MainForm: TMainForm
       end
       object GroupLayout: TGroupBox
         Left = 344
-        Height = 280
+        Height = 185
         Top = 16
-        Width = 617
+        Width = 601
         Caption = 'Design Einstellungen'
-        ClientHeight = 260
-        ClientWidth = 613
+        ClientHeight = 165
+        ClientWidth = 597
         TabOrder = 1
         object GroupBox2: TGroupBox
           Left = 8

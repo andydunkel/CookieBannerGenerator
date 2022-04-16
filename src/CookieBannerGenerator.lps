@@ -19,8 +19,9 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="127"/>
-        <CursorPos X="17" Y="155"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="99"/>
+        <CursorPos X="71" Y="109"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -28,7 +29,6 @@
       <Unit>
         <Filename Value="udatamodel.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
         <TopLine Value="318"/>
         <CursorPos X="64" Y="352"/>
@@ -40,8 +40,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="XMLHelper"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="36"/>
-        <CursorPos X="55" Y="58"/>
+        <TopLine Value="56"/>
+        <CursorPos X="20" Y="56"/>
         <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
@@ -79,9 +79,6 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="1"/>
-    </General>
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="udatamodel.pas"/>

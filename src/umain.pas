@@ -121,7 +121,7 @@ begin
 
   cboSettingsLayout.Text:= DataModel.GuiOptionSettingsModal.layout;
   cboSettingsPosition.Text:= DataModel.GuiOptionSettingsModal.position;
-  cboContentTransition.Text:= DataModel.GuiOptionSettingsModal.transition;
+  cboSettingsTransition.Text:= DataModel.GuiOptionSettingsModal.transition;
 end;
 
 procedure TMainForm.ActionNewExecute(Sender: TObject);
