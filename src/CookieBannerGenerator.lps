@@ -9,8 +9,8 @@
         <Filename Value="CookieBannerGenerator.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <CursorPos X="49" Y="12"/>
-        <UsageCount Value="26"/>
+        <CursorPos X="35" Y="7"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,9 +19,9 @@
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="30"/>
-        <CursorPos X="17" Y="37"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="62"/>
+        <CursorPos X="2" Y="116"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -30,9 +30,9 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="169"/>
-        <CursorPos X="68" Y="190"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="78"/>
+        <CursorPos X="5" Y="100"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -41,15 +41,15 @@
         <UnitName Value="XMLHelper"/>
         <EditorIndex Value="3"/>
         <CursorPos X="16" Y="10"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="globalfunctions.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="68" Y="10"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="34" Y="17"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
@@ -57,42 +57,6 @@
       <ActiveWindowIndexAtStart Value="1"/>
     </General>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="106" Column="76" TopLine="93"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="105" Column="76" TopLine="92"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="106" Column="76" TopLine="93"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="105" Column="76" TopLine="92"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="106" Column="76" TopLine="93"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="107" Column="76" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="106" Column="76" TopLine="93"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="107" Column="76" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="umain.pas"/>
-        <Caret Line="108" Column="76" TopLine="95"/>
-      </Position>
       <Position>
         <Filename Value="umain.pas"/>
         <Caret Line="109" Column="76" TopLine="96"/>
@@ -176,6 +140,42 @@
       <Position>
         <Filename Value="udatamodel.pas"/>
         <Caret Line="136" Column="76" TopLine="114"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="78" Column="19" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="umain.pas"/>
+        <Caret Line="116" Column="2" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="98" Column="18" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="233" Column="12" TopLine="211"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="85" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="83" Column="38" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="239" Column="34" TopLine="204"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="100" Column="60" TopLine="71"/>
+      </Position>
+      <Position>
+        <Filename Value="udatamodel.pas"/>
+        <Caret Line="82" Column="56" TopLine="78"/>
       </Position>
     </JumpHistory>
     <RunParams>

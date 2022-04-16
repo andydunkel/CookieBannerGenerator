@@ -5,7 +5,7 @@ unit udatamodel;
 interface
 
 uses
-  Classes, SysUtils, contnrs, XMLHelper, laz2_XMLRead, laz2_XmlWrite, laz2_DOM;
+  Classes, SysUtils, contnrs, XMLHelper, laz2_XMLRead, laz2_XmlWrite, laz2_DOM, fgl;
 
 type
 
@@ -75,7 +75,12 @@ type
     Toggle: TToggle;
     CookieTable: TObjectList;
     constructor Create;
+    procedure Save(Doc: TXMLDocument; Node: TDOMNode);
+    procedure Load(Node: TDOMNode);
   end;
+
+type
+  TBlockList = class(specialize TFPGObjectList<TBlock>);
 
 type
 
@@ -92,7 +97,10 @@ type
     cookie_table_header2: String;
     cookie_table_header3: String;
     cookie_table_header4: String;
-    Blocks: TObjectList;
+    //Blocks: TObjectList;
+    Blocks: TBlockList;
+    procedure Save(Doc: TXMLDocument; Node: TDOMNode);
+    procedure Load(Node: TDOMNode);
     constructor Create;
   end;
 
@@ -201,10 +209,39 @@ end;
 
 { TSettingsModal }
 
+procedure TSettingsModal.Save(Doc: TXMLDocument; Node: TDOMNode);
+var
+  BlockNode: TDOMNode;
+  i: Integer;
+begin
+  TXMLHelper.CreateXmlNode(doc, Node, 'title', title);
+  TXMLHelper.CreateXmlNode(doc, Node, 'save_settings_btn', save_settings_btn);
+  TXMLHelper.CreateXmlNode(doc, Node, 'accept_all_btn', accept_all_btn);
+  TXMLHelper.CreateXmlNode(doc, Node, 'reject_all_btn', reject_all_btn);
+  TXMLHelper.CreateXmlNode(doc, Node, 'close_btn_label', close_btn_label);
+  TXMLHelper.CreateXmlNode(doc, Node, 'cookie_table_header1', cookie_table_header1);
+  TXMLHelper.CreateXmlNode(doc, Node, 'cookie_table_header2', cookie_table_header2);
+  TXMLHelper.CreateXmlNode(doc, Node, 'cookie_table_header3', cookie_table_header3);
+  TXMLHelper.CreateXmlNode(doc, Node, 'cookie_table_header4', cookie_table_header4);
+
+  BlockNode:= TXMLHelper.CreateXmlNode(doc, 'Blocks');
+  Node.AppendChild(BlockNode);
+
+  for i:= 0 to Blocks.Count do
+  begin
+    Blocks[i].Save(Doc, BlockNode);
+  end;
+end;
+
+procedure TSettingsModal.Load(Node: TDOMNode);
+begin
+
+end;
+
 constructor TSettingsModal.Create;
 begin
-  Self.Blocks:= TObjectList.Create;
-  Self.Blocks.OwnsObjects:= true;
+//  Self.Blocks:= TObjectList.Create;
+  Self.Blocks:= TBlockList.Create;
 end;
 
 { TBlock }
@@ -216,10 +253,22 @@ begin
   CookieTable.OwnsObjects:= true;
 end;
 
+procedure TBlock.Save(Doc: TXMLDocument; Node: TDOMNode);
+begin
+
+
+end;
+
+procedure TBlock.Load(Node: TDOMNode);
+begin
+
+end;
+
 procedure TDataModel.Save;
 var
   doc : TXMLDocument;
   mainNode, GuiOptionConsentModalNode,GuiOptionSettingsModalNode : TDOMNode;
+  ConsentModalNode, SettingsModalNode: TDOMNode;
 begin
   doc:= TXMLDocument.Create;
 
@@ -240,10 +289,16 @@ begin
   GuiOptionSettingsModalNode:= TXMLHelper.CreateXmlNode(doc, 'GuiOptionSettingsModal');
   Self.GuiOptionSettingsModal.Save(doc, GuiOptionSettingsModalNode);
 
-
-
   mainNode.AppendChild(GuiOptionSettingsModalNode);
   mainNode.AppendChild(GuiOptionConsentModalNode);
+
+  ConsentModalNode:= TXMLHelper.CreateXmlNode(doc, 'ConsentModal);
+  Self.ConsentModal.Save(doc, ConsentModalNode);
+  mainNode.AppendChild(ConsentModalNode);
+
+  SettingsModalNode:= TXMLHelper.CreateXmlNode(doc, 'SettingsModal');
+;
+  mainNode.AppendChild(SettingsModalNode);
 
   WriteXMLFile(doc, Self.FileName);
 end;
