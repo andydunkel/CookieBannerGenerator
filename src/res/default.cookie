@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <current_lang>de</current_lang>
+  <cookie_name>cookie_name</cookie_name>
+  <autoclear>0</autoclear>
+  <page_scripts>0</page_scripts>
+  <hide_from_bots>-1</hide_from_bots>
+  <remove_cookie_tables>0</remove_cookie_tables>
+  <delay>100</delay>
+  <GuiOptionSettingsModal>
+    <layout>box</layout>
+    <position>center</position>
+    <position1/>
+    <transition>zoom</transition>
+  </GuiOptionSettingsModal>
+  <GuiOptionConsentModal>
+    <layout>box</layout>
+    <position>middle</position>
+    <position1>middle</position1>
+    <transition>zoom</transition>
+  </GuiOptionConsentModal>
+  <ConsentModal>
+    <title/>
+    <description/>
+    <primary_btn_text/>
+    <secondary_btn_text/>
+  </ConsentModal>
+  <SettingsModal>
+    <title/>
+    <save_settings_btn/>
+    <accept_all_btn/>
+    <reject_all_btn/>
+    <close_btn_label/>
+    <cookie_table_header1/>
+    <cookie_table_header2/>
+    <cookie_table_header3/>
+    <cookie_table_header4/>
+    <Blocks/>
+  </SettingsModal>
+</xml>

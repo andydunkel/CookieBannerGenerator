@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 599
+  Left = -1125
   Height = 575
-  Top = 384
+  Top = 250
   Width = 975
   Caption = 'JS-CookieBannerGenerator'
   ClientHeight = 555

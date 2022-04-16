@@ -66,6 +66,9 @@ type
 
 
 type
+  TCookieTableList = class(specialize TFPGObjectList<TCookieTableEntry>);
+
+type
 
   { TBlock }
 
@@ -73,7 +76,7 @@ type
     title: string;
     description: string;
     Toggle: TToggle;
-    CookieTable: TObjectList;
+    CookieTable: TCookieTableList;
     constructor Create;
     procedure Save(Doc: TXMLDocument; Node: TDOMNode);
     procedure Load(Node: TDOMNode);
@@ -97,7 +100,6 @@ type
     cookie_table_header2: String;
     cookie_table_header3: String;
     cookie_table_header4: String;
-    //Blocks: TObjectList;
     Blocks: TBlockList;
     procedure Save(Doc: TXMLDocument; Node: TDOMNode);
     procedure Load(Node: TDOMNode);
@@ -123,10 +125,10 @@ type
     ConsentModal: TConsentModal;
     SettingsModal: TSettingsModal;
 
-    FileName : string;
+    CurrentFileName : string;
 
     procedure Save;
-    procedure Load;
+    procedure Load(FileName: String);
     constructor Create;
   end;
 
@@ -212,6 +214,7 @@ end;
 procedure TSettingsModal.Save(Doc: TXMLDocument; Node: TDOMNode);
 var
   BlockNode: TDOMNode;
+  count: Integer;
   i: Integer;
 begin
   TXMLHelper.CreateXmlNode(doc, Node, 'title', title);
@@ -227,20 +230,46 @@ begin
   BlockNode:= TXMLHelper.CreateXmlNode(doc, 'Blocks');
   Node.AppendChild(BlockNode);
 
-  for i:= 0 to Blocks.Count do
+  count:= Blocks.Count;
+
+  for i:= 0 to count - 1 do
   begin
     Blocks[i].Save(Doc, BlockNode);
   end;
 end;
 
 procedure TSettingsModal.Load(Node: TDOMNode);
+var
+  BlockNode: TDOMNode;
+  Block: TBlock;
+  i : Integer;
 begin
+  Self.title:= TXMLHelper.GetXML('title', Node);
+  Self.save_settings_btn:= TXMLHelper.GetXML('save_settings_btn', Node);
+  Self.accept_all_btn:= TXMLHelper.GetXML('accept_all_btn', Node);
+  Self.reject_all_btn:= TXMLHelper.GetXML('reject_all_btn', Node);
+  Self.close_btn_label:= TXMLHelper.GetXML('close_btn_label', Node);
+  Self.cookie_table_header1:= TXMLHelper.GetXML('cookie_table_header1', Node);
+  Self.cookie_table_header2:= TXMLHelper.GetXML('cookie_table_header2', Node);
+  Self.cookie_table_header3:= TXMLHelper.GetXML('cookie_table_header3', Node);
+  Self.cookie_table_header4:= TXMLHelper.GetXML('cookie_table_header4', Node);
 
+  BlockNode:= Node.FindNode('Blocks');
+  Blocks.Clear;
+
+  if (BlockNode <> nil) then begin
+     for i:= 0 to BlockNode.GetChildCount do
+     begin
+       Block:= TBlock.Create;
+       Block.Load(BlockNode.ChildNodes[i]);
+       Blocks.Add(Block);
+     end;
+
+  end;
 end;
 
 constructor TSettingsModal.Create;
 begin
-//  Self.Blocks:= TObjectList.Create;
   Self.Blocks:= TBlockList.Create;
 end;
 
@@ -249,13 +278,11 @@ end;
 constructor TBlock.Create;
 begin
   Toggle:= TToggle.Create;
-  CookieTable:= TObjectList.Create;
-  CookieTable.OwnsObjects:= true;
+  CookieTable:= TCookieTableList.Create;
 end;
 
 procedure TBlock.Save(Doc: TXMLDocument; Node: TDOMNode);
 begin
-
 
 end;
 
@@ -292,19 +319,33 @@ begin
   mainNode.AppendChild(GuiOptionSettingsModalNode);
   mainNode.AppendChild(GuiOptionConsentModalNode);
 
-  ConsentModalNode:= TXMLHelper.CreateXmlNode(doc, 'ConsentModal);
+  ConsentModalNode:= TXMLHelper.CreateXmlNode(doc, 'ConsentModal');
   Self.ConsentModal.Save(doc, ConsentModalNode);
   mainNode.AppendChild(ConsentModalNode);
 
   SettingsModalNode:= TXMLHelper.CreateXmlNode(doc, 'SettingsModal');
-;
+  SettingsModal.Save(doc, SettingsModalNode);
   mainNode.AppendChild(SettingsModalNode);
 
-  WriteXMLFile(doc, Self.FileName);
+  WriteXMLFile(doc, Self.CurrentFileName);
 end;
 
-procedure TDataModel.Load;
+procedure TDataModel.Load(FileName: String);
+var
+  Doc: TXMLDocument;
+  MainNode: TDOMNode;
 begin
+  ReadXMLFile(Doc, FileName);
+  MainNode:= Doc.DocumentElement;
+
+  Self.current_lang:= TXMLHelper.GetXML('current_lang', MainNode);
+  Self.cookie_name:= TXMLHelper.GetXML('cookie_name', MainNode);
+  Self.autoclear:= TXMLHelper.GetXMLBool('autoclear', MainNode);
+  Self.hide_from_bots:= TXMLHelper.GetXMLBool('hide_from_bots', MainNode);
+  Self.remove_cookie_tables:= TXMLHelper.GetXMLBool('remove_cookie_tables', MainNode);
+  Self.delay:= StrToInt(TXMLHelper.GetXML('delay', MainNode));
+
+
 
 end;
 

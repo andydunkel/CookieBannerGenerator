@@ -96,6 +96,14 @@ begin
   DataModel.hide_from_bots:= chkHideBots.Checked;
   DataModel.remove_cookie_tables:= chkRemoveCookieTables.Checked;
 
+  DataModel.GuiOptionConsentModal.layout:= cboConsentLayout.Text;
+  DataModel.GuiOptionConsentModal.position:= cboContentPosition1.Text;
+  DataModel.GuiOptionConsentModal.position1:= cboContentPosition1.Text;
+  DataModel.GuiOptionConsentModal.transition:= cboContentTransition.Text;
+
+  DataModel.GuiOptionSettingsModal.layout:= cboSettingsLayout.Text;
+  DataModel.GuiOptionSettingsModal.position:= cboSettingsPosition.Text;
+  DataModel.GuiOptionSettingsModal.transition:= cboContentTransition.Text;
 end;
 
 procedure TMainForm.ModelToDialog;
@@ -105,6 +113,15 @@ begin
   edtCookieName.Text:= DataModel.cookie_name;
   chkHideBots.Checked:= DataModel.hide_from_bots;
   chkRemoveCookieTables.Checked:= DataModel.remove_cookie_tables;
+
+  cboConsentLayout.Text:= DataModel.GuiOptionConsentModal.layout;
+  cboContentPosition1.Text:= DataModel.GuiOptionConsentModal.position;
+  cboContentPosition1.Text:= DataModel.GuiOptionConsentModal.position1;
+  cboContentTransition.Text:= DataModel.GuiOptionConsentModal.transition;
+
+  cboSettingsLayout.Text:= DataModel.GuiOptionSettingsModal.layout;
+  cboSettingsPosition.Text:= DataModel.GuiOptionSettingsModal.position;
+  cboContentTransition.Text:= DataModel.GuiOptionSettingsModal.transition;
 end;
 
 procedure TMainForm.ActionNewExecute(Sender: TObject);
@@ -117,7 +134,7 @@ begin
   if SaveDialog.Execute then
   begin
     DialogToModel;
-    DataModel.FileName:= SaveDialog.FileName;
+    DataModel.CurrentFileName:= SaveDialog.FileName;
     DataModel.Save;
   end;
 end;
@@ -128,8 +145,14 @@ begin
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
+var
+  DefaultFileName: String;
+  Content: String;
 begin
   DataModel:= TDataModel.Create;
+  DefaultFileName:= GetApplicationFile('res\default.cookie');
+  DataModel.Load(DefaultFileName);
+  ModelToDialog;
 end;
 
 end.
