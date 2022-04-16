@@ -333,7 +333,7 @@ end;
 procedure TDataModel.Load(FileName: String);
 var
   Doc: TXMLDocument;
-  MainNode: TDOMNode;
+  MainNode, GuiOptionConsentModalNode,GuiOptionSettingsModalNode : TDOMNode;
 begin
   ReadXMLFile(Doc, FileName);
   MainNode:= Doc.DocumentElement;
@@ -345,6 +345,11 @@ begin
   Self.remove_cookie_tables:= TXMLHelper.GetXMLBool('remove_cookie_tables', MainNode);
   Self.delay:= StrToInt(TXMLHelper.GetXML('delay', MainNode));
 
+  GuiOptionConsentModalNode:= MainNode.FindNode('GuiOptionConsentModal');
+  Self.GuiOptionConsentModal.Load(GuiOptionConsentModalNode);
+
+  GuiOptionSettingsModalNode:= MainNode.FindNode('GuiOptionSettingsModal');
+  Self.GuiOptionSettingsModal.Load(GuiOptionSettingsModalNode);
 
 
 end;
