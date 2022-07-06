@@ -20,8 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="99"/>
-        <CursorPos X="71" Y="109"/>
+        <TopLine Value="100"/>
+        <CursorPos X="42" Y="105"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -29,11 +29,11 @@
       <Unit>
         <Filename Value="udatamodel.pas"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="318"/>
         <CursorPos X="64" Y="352"/>
         <UsageCount Value="35"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="xmlhelper.pas"/>
@@ -64,12 +64,11 @@
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\include\controlscrollbar.inc"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="157"/>
-        <CursorPos Y="173"/>
+        <CursorPos X="25" Y="171"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\finah.inc"/>
@@ -78,52 +77,15 @@
         <CursorPos X="10" Y="43"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="232" TopLine="211"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="235" TopLine="211"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="302" TopLine="280"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="235" TopLine="213"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="302" TopLine="280"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="235" Column="14" TopLine="213"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="239" TopLine="213"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="328" TopLine="307"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="330" TopLine="307"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="331" TopLine="307"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="301" Column="17" TopLine="279"/>
-      </Position>
+    <JumpHistory HistoryIndex="9">
       <Position>
         <Filename Value="umain.pas"/>
         <Caret Line="138" TopLine="120"/>
@@ -145,14 +107,6 @@
         <Caret Line="153" Column="32" TopLine="125"/>
       </Position>
       <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="128" Column="20" TopLine="106"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="132" Column="29" TopLine="109"/>
-      </Position>
-      <Position>
         <Filename Value="globalfunctions.pas"/>
         <Caret Line="49" Column="20" TopLine="38"/>
       </Position>
@@ -169,36 +123,8 @@
         <Caret Line="58" TopLine="38"/>
       </Position>
       <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="344" Column="3" TopLine="308"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="346" Column="53" TopLine="312"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="344" Column="24" TopLine="315"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="346" Column="62" TopLine="315"/>
-      </Position>
-      <Position>
         <Filename Value="CookieBannerGenerator.lpr"/>
         <Caret Line="19"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="342" Column="70" TopLine="315"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="340" Column="20" TopLine="315"/>
-      </Position>
-      <Position>
-        <Filename Value="udatamodel.pas"/>
-        <Caret Line="338" Column="36" TopLine="315"/>
       </Position>
     </JumpHistory>
     <RunParams>
